@@ -1,0 +1,838 @@
+/* Estilos básicos */
+html {
+ -moz-text-size-adjust: none;
+ -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  
+}
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: black;
+  
+}
+h1, h2{
+  color: floralwhite;
+}
+h3 {
+  font-style:oblique;
+  color:#00ff00;
+}
+
+p {
+  color: floralwhite;
+}
+
+/*Adderar header costumization*/
+header {
+  height: 100vh;
+  display: flex;
+}
+/* Estilos del nav */
+nav {
+  display: inline-block;  
+  padding: 10px;  
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  height: auto;
+}
+/* Barra lateral fija */
+.sidebar {
+  position:fixed;  
+}
+
+/* Icono de menú que cambia a "X" cuando está abierto */
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;  
+}
+
+.nav-links li {
+  margin-left: 0;  
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: relative;
+  transition: color 0.2s ease;  
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #00ff00;
+  left: 0;
+  bottom: -5px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;  
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;  
+}
+.menu-checkbox {
+  display: none;
+}
+/* Estilos del ícono del menú hamburguesa */
+.menu-toggle-label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 100;
+  box-shadow: 0 2px 35px yellow;
+}
+.bar {
+  width: 35px;
+  height: 5px;
+  background-color: greenyellow;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+/* Estilos del menú cuando está cerrado */
+.nav-links {
+  list-style-type: none;
+  position: absolute;
+  top: 60px;
+  left: -100%; /*Oculta el menu cuando esta cerrado*/
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 99;
+  transition: left 0.4s ease;
+}
+
+/* Estilos del menú cuando se abre (al activar el checkbox) */
+.menu-checkbox:checked ~ .nav-links {
+    left: 20px; 
+  }
+
+/* Cambios en el ícono del menú hamburguesa cuando el menú está activo */
+.menu-checkbox:checked + .menu-toggle-label .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.menu-checkbox:checked + .menu-toggle-label .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-checkbox:checked + .menu-toggle-label .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/* Estilos de los elementos del menú */
+.nav-links li {
+  margin-left: 0;
+}
+.nav-links a {
+  text-decoration:none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: floralwhite;
+  transition: color 0.3s ease;
+  gap: 10px;
+}
+.nav-links a:hover {
+  color: yellow;
+}
+/* Estilos de la página */
+.page1, .page2, .page3 {
+
+  display: flex;
+  height: 100vh; 
+  width: 100%;
+  margin-top: 0;
+  overflow: hidden;
+  position: relative;
+}
+/* Contenedor de texto vertical */
+.vertical-text-container {
+  width: 50px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black; 
+}
+
+/* Texto vertical */
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 2.2rem;
+  font-family: 'Jockey One', sans-serif;
+  text-transform: uppercase;
+  color: greenyellow;
+  margin: 0;
+}
+
+/* Contenedor de la cuadrícula */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;  
+  gap: 15px;
+  margin: 2px;
+  flex-grow: 1;   
+  margin-left: 25px;  
+  width: 100%;
+  height: 100%;   
+  box-shadow: 0 2px 35px yellow;
+  
+}
+
+.grid-container::before 
+{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background-color:#ffd700;
+  
+}
+/* Estilos de los ítems */
+.grid-item {
+  background-color: #080808;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #333; 
+  padding: 10px;
+  font-size: 1.1rem;   
+  box-shadow: 0 -4px 15px greenyellow;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+}
+
+.grid-item:hover {
+  transform: translateY(-10);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item:active {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Imagen de la lechuga */
+.salad-image {
+  grid-area: 2 / 1 / 3 / 2; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  
+}
+/* Hover sobre la imagen de la lechuga */
+.lechuga-hover {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease-in-out;
+  
+}
+.lechuga-hover:hover {
+  transform: translateY(20px);
+}
+/* Estilos para el texto TAHINI */
+.tahini-text {
+  color: #00ff00; 
+  font-size: 5rem; 
+  font-family: 'Jockey One', sans-serif;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+  position: relative;
+  top: 10px;
+}
+/* Estilos para el texto DRIZZLE */
+.drizzle-text {
+  color: #9c70f6; 
+  font-size: 3.5rem; 
+  font-family: 'Jockey One', sans-serif; 
+  margin: 0;
+  text-transform: uppercase;
+  position: relative;
+  top: 20px; 
+}
+/* Estilos para el texto CHICKPEAS */
+.chickpeas-text {
+  color: #ffd700; 
+  font-size: 2.5rem;
+  font-family: 'Jockey One', sans-serif;
+  margin: 0;
+  text-transform: uppercase;
+  position: relative;
+  top: 30px; 
+}
+/* Ubicación del grid1 */
+.grid1-text {
+  grid-area: 1 / 1 / 2 / 2; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+/* Estilos de texto para el grid 2 */
+.green-text {
+  color: greenyellow;
+  font-size: 1.5rem; 
+  line-height: 1.5; 
+}
+/* Estilos de texto para el grid 4 */
+.violet-text {
+  color: #c5a5fc;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+.explore-menu {
+  position:relative;
+  display: inline-block;
+  text-transform: uppercase;
+  color: green;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  justify-content: center;
+}
+.explore-menu::after {
+  content: '↓'; 
+  position:absolute;
+  top:0;
+  right:0;
+  font-size: 4rem; 
+  animation: bounce 2s infinite;
+}
+
+/* Animación para la flecha */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+}
+/* Cambiar de página con un anclaje en CSS */
+a.explore-menu {
+  text-decoration: none; 
+  color: greenyellow;
+   
+}
+/* Página 2 - Menú principal */
+.menu {
+  color:#00ff00;
+  font-size: 2rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  
+}
+.menu-images {
+  display: grid;
+  grid-template-rows:auto;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.menu-images img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 2px solid #ffde00; 
+  box-shadow: 0 2px 35px yellow;
+  border-radius: 10px;
+}
+
+/* Menú principal */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  background-color: #060606;
+  padding: 10px;  
+}
+
+.menu-item {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid greenyellow;
+  box-shadow: 0 2px 25px yellow;
+  position: relative;
+  transition: transform 0.2s ease-in-out, background-color 0.3s ease;
+  border-radius: 15px;
+}
+
+.menu-item:hover {
+  transform: translateX(5px);
+  background-color: gold;
+}
+/* Etiquetas y precios */
+.price {
+  position: absolute;
+  right: 20px;
+  font-weight: bold;
+}
+
+.new-label {
+  background-color: #d8bffb;
+  padding: 3px 6px;
+  color: #fff;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+
+.vegan-label {
+  background-color: #38ef7d;
+  padding: 3px 6px;
+  color: #fff;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+
+.popular-label {
+  background-color: #ffe900;
+  padding: 3px 6px;
+  color: #000;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+/* Página 3 - Formulario */
+.contact-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #00ff00;
+}
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: rgb(128, 210, 5);
+  border-radius: 10px;
+  box-shadow: 0 2px 35px yellow;
+  border-radius: 25px;
+   
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid blue;
+  border-radius: 10px;
+  outline:none;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+ border-color: greenyellow;
+}
+
+.submit-container {
+  text-align: center; 
+}
+
+.submit-btn {
+  background-color: black;
+  color: floralwhite;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bolder;
+  border-radius: 25px;
+}
+
+.submit-btn:hover {
+  color: black;
+  background-color: yellow;
+}
+
+/* Estilos generales de la página */
+.page3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4rem;
+  width: 100%;
+}
+/* footer */
+.contact-footer {
+  background-color:indigo;
+  color: floralwhite;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 -4px 35px greenyellow;
+  font-size: 1.5rem;
+  max-width: 600px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 0 auto;
+  border-radius: 30px;
+  
+}
+.contact-footer p {
+  margin: 0.5rem 0;
+  font-weight: bold;
+  text-align:center;
+  color: greenyellow;  
+  box-shadow: 0 -4px 8px greenyellow;
+  border-radius: 5px;
+}
+.contact-footer a {
+  color: floralwhite;
+  text-decoration: none;
+}
+.contact-footer a:hover {
+  text-decoration: underline;
+  color:greenyellow;
+}
+.buttons-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* Botón de Enviar */
+.submit-btn {
+  background-color: floralwhite;
+  color: black;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bolder;
+}
+.submit-btn:hover {
+  color: yellow;
+  background-color: black;
+}
+/* Botón de Cancelar */
+.cancel-btn {
+  background-color: red;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bolder;
+}
+.cancel-btn:hover {
+  background-color:crimson;
+  color: black;
+} 
+ 
+/* Media Queries */
+
+/* Estilos para pantallas muy pequeñas (250px a 400px) */
+@media (max-width: 400px) {
+  h1 { font-size: 1.2rem; word-wrap: break-word; }
+  h2 { font-size: 1rem; }
+  h3 { font-size: 0.8rem; }
+  p { font-size: 0.8rem; line-height: 1.2; }
+  .menu { font-size: 1.3rem; }
+  #page1 { padding-bottom: 20px; }
+
+  /* Ajustes para el contenedor de grids */
+  .grid-container {
+    grid-template-columns: 1fr; /* Forzar una sola columna */
+    gap: 10px;
+    margin-left: 8px;
+  }
+  .grid-item {
+    font-size: 0.9rem; 
+    padding: 5px;
+  }
+
+  /* Ajustes de tamaño para imágenes */
+  .lechuga-hover {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Ajustes para la navegación */
+  .nav-links {
+    flex-direction: column;
+    display: none; /* Ocultar links por defecto */
+  }
+  .menu-checkbox:checked ~ .nav-links {
+    display: flex; /* Mostrar links cuando el menú esté activado */
+  }
+  .sidebar {
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+  .menu-toggle-label .bar {
+    width: 20px;
+    height: 2px;
+  }
+  .menu-checkbox:checked + .menu-toggle-label .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px); /* Ajuste para que se vea la barra */
+  }
+  .menu-checkbox:checked + .menu-toggle-label .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px); /* Ajuste para que se vea la barra */
+  }
+
+  /* Contenedor de texto */
+  .vertical-text-container {
+    width: auto;
+    padding: 5px;
+  }
+  .vertical-text {
+    font-size: 1.2rem; /* Ajustar el tamaño del texto vertical */
+  }
+
+  /* Ajustes para el texto dentro del grid */
+  .tahini-text, .drizzle-text, .chickpeas-text, .green-text, .violet-text, a.explore-menu, a.explore-menu::after {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .contact-title {
+    font-size: 1.5rem;
+  }
+  .contact-footer {
+    margin-top: 10px;
+  }
+  .contact-footer p {
+    font-size: 1rem;
+  }
+}
+
+/* Estilos para pantallas pequeñas (400px a 600px) */
+@media (min-width: 400px) and (max-width: 600px) {
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.2rem; }
+  h3 { font-size: 1rem; }
+  p { font-size: 0.9rem; line-height: 1.3; }
+  .menu { font-size: 1.5rem; }
+  #page1 { padding-bottom: 25px; }
+
+  /* Ajustes para el contenedor de grids */
+  .grid-container {
+    grid-template-columns: 1fr; /* Forzar una sola columna */
+    gap: 12px;
+    margin-left: 10px;
+  }
+  .grid-item {
+    font-size: 1rem; 
+    padding: 6px;
+  }
+
+  /* Ajustes de tamaño para imágenes */
+  .lechuga-hover {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Ajustes para la navegación */
+  
+  .nav-links {
+    flex-direction: column;
+    display: none; /* Ocultar links por defecto */
+  }
+  .menu-checkbox:checked ~ .nav-links {
+    display: flex; /* Mostrar links cuando el menú esté activado */
+  }
+  .sidebar {
+    font-size: 0.8rem;
+    padding: 7px;
+  }
+  .menu-toggle-label .bar {
+    width: 25px;
+    height: 3px;
+  }
+  .menu-checkbox:checked + .menu-toggle-label .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px); /* Ajuste para que se vea la barra */
+  }
+  .menu-checkbox:checked + .menu-toggle-label .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px); /* Ajuste para que se vea la barra */
+  }
+
+  /* Contenedor de texto */
+  .vertical-text-container {
+    width: auto;
+    padding: 7px;
+  }
+  .vertical-text {
+    font-size: 1.5rem; /* Ajustar el tamaño del texto vertical */
+  }
+
+  /* Ajustes para el texto dentro del grid */
+  .tahini-text, .drizzle-text, .chickpeas-text, .green-text, .violet-text, a.explore-menu, a.explore-menu::after {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .contact-title {
+    font-size: 1.7rem;
+  }
+  .contact-footer {
+    margin-top: 12px;
+  }
+  .contact-footer p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Estilos para pantallas medianas (600px a 900px) */
+@media (min-width: 600px) and (max-width: 900px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.2rem; }
+  p { font-size: 1rem; line-height: 1.4; }
+  .menu { font-size: 1.7rem; }
+  #page1 { padding-bottom: 30px; }
+
+  /* Ajustes para el contenedor de grids */
+  .grid-container {
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 15px;
+    margin-left: 12px;
+  }
+  .grid-item {
+    font-size: 1.2rem; 
+    padding: 8px;
+  }
+
+  /* Ajustes de tamaño para imágenes */
+  .lechuga-hover {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Ajustes para la navegación */
+  
+  .nav-links {
+    flex-direction: column;
+    display: none; /* Ocultar links por defecto */
+  }
+  .menu-checkbox:checked ~ .nav-links {
+    display: flex; /* Mostrar links cuando el menú esté activado */
+  }
+
+  .sidebar {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  .menu-toggle-label .bar {
+    width: 30px;
+    height: 4px;
+  }
+  .menu-checkbox:checked + .menu-toggle-label .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px); /* Ajuste para que se vea la barra */
+  }
+  .menu-checkbox:checked + .menu-toggle-label .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px); /* Ajuste para que se vea la barra */
+  }
+
+  /* Contenedor de texto */
+  .vertical-text-container {
+    width: auto;
+    padding: 10px;
+  }
+  .vertical-text {
+    font-size: 1.8rem; /* Ajustar el tamaño del texto vertical */
+  }
+
+  /* Ajustes para el texto dentro del grid */
+  .tahini-text, .drizzle-text, .chickpeas-text, .green-text, .violet-text, a.explore-menu, a.explore-menu::after {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .contact-title {
+    font-size: 1.9rem;
+  }
+  .contact-footer {
+    margin-top: 15px;
+  }
+  .contact-footer p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Estilos para pantallas grandes (900px a 1200px) */
+@media (min-width: 900px) and (max-width: 1200px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+  p { font-size: 1.1rem; line-height: 1.5; }
+  .menu { font-size: 2rem; }
+  #page1 { padding-bottom: 35px; }
+
+  /* Ajustes para el contenedor de grids */
+  .grid-container {
+    grid-template-columns: 1fr 1fr 1fr; /* Tres columnas */
+    gap: 20px;
+    margin-left: 15px;
+  }
+  .grid-item {
+    font-size: 1.4rem; 
+    padding: 10px;
+  }
+
+  /* Ajustes de tamaño para imágenes */
+  .lechuga-hover {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Ajustes para la navegación */
+  .nav-links {
+    flex-direction: column;
+    display: none; /* Ocultar links por defecto */
+  }
+  .menu-checkbox:checked ~ .nav-links {
+    display: flex; /* Mostrar links cuando el menú esté activado */
+  }  
+  .contact-footer {
+    margin-top: 15px;
+  }
+  .contact-footer p {
+    font-size: 1.2rem;
+  }
+}
