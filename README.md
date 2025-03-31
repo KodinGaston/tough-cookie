@@ -9,7 +9,7 @@ This is a simple, modern, and responsive website that features:
 - **Home**: A fresh introduction to the **Tough Cookie** experience, showcasing our vibrant and healthy food options. 🌿
 - **Menu**: A sneak peek at some of the amazing dishes that we offer, including new, vegan, and popular items. 🍽️
 - **Contact**: A convenient form for reaching out to us, plus important contact info. 💌
-- **Link of the proyect**: ✨https://kodingaston.github.io/tough-cookie✨
+- **Link of the proyect**: ✨ https://kodingaston.github.io/tough-cookie ✨
 
 ## ✨ Key Features ✨
 
